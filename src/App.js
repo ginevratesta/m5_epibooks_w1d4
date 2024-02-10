@@ -1,4 +1,4 @@
-import BookList from "./components/AllTheBooks";
+import BookList from "./components/GetBooksData";
 
 const App = () => {
   return(

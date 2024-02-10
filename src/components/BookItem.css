@@ -1,0 +1,8 @@
+.card img{
+    aspect-ratio: 1/2;
+    height: 400px;
+}
+
+.card_body{
+    height: 200px;
+}
