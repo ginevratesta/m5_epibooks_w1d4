@@ -7,8 +7,8 @@ const BookHTML = (props) => {
     const title = props.title;
     const price = props.price;
     const category = props.category;
+
     return(
-    
         <Card>
       <Card.Img variant="top" src={img} />
       <Card.Body className="card_body">
