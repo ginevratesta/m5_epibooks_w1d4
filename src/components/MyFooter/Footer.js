@@ -4,7 +4,7 @@ const Footer = (props) => {
     return(
         <footer className="text-center py-5 bg-light">
             <p>Thanks for passing by!</p>
-            <span>Contact us through our phone number: {phone} or email: {email}</span>
+            <p>Contact us through our phone number: {phone} or email: {email}</p>
         </footer>
     )
 };
