@@ -1,9 +1,9 @@
-import BookList from "./components/GetBooksData";
+import GetBooksData from "./components/GetBooksData";
 
 const App = () => {
   return(
     <main>
-      <BookList />
+      <GetBooksData />
     </main>
   )
 };
