@@ -5,10 +5,14 @@ import Col from "react-bootstrap/Col";
 import BookHTML from "./BookItem";
 
 const URL = "https://epibooks.onrender.com/romance";
+const formID = "searchBar";
 
 const GetBooksData = () => {
   const [books, setBooks] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [searchBook, setSearchBook] = useState("");
+  const [filteredBooks, setFilteredBooks] = useState([]);
+  const [searchPerformed, setSearchPerformed] = useState(false);
 
   useEffect(() => {
     const fetchBooks = async () => {
@@ -20,33 +24,62 @@ const GetBooksData = () => {
         }
         const data = await response.json();
         setBooks(data);
-        setLoading(false); 
+        setLoading(false);
       } catch (error) {
         console.error(error.message);
       }
     };
-    
+
     fetchBooks();
   }, []);
 
-  if (loading) {
-    return <div><h1 className="text-center mt-5">Loading...</h1></div>; 
-  }
-  
+  const handleSearch = () => {
+    const filtered = books.filter((book) =>
+      book.title.toLowerCase().includes(searchBook.toLowerCase())
+    );
+    setFilteredBooks(filtered);
+    setSearchPerformed(true); 
+    setSearchBook("");
+  };
+
+  const handleInputChange = (e) => {
+    setSearchBook(e.target.value);
+    setSearchPerformed(false); 
+  };
+
   return (
     <Container className="py-5">
-      <Row className="g-4">
-        {books.map((book) => (
-          <Col md="6" lg="3" key={book.asin}>
-            <BookHTML
-              img={book.img}
-              title={book.title}
-              price={book.price}
-              category={book.category}
-            />
-          </Col>
-        ))}
-      </Row>
+      <div className="mb-3">
+        <input
+          id = {formID}
+          type="text"
+          placeholder="Search by book title..."
+          value={searchBook}
+          onChange={handleInputChange}
+        />
+        <button type="button" onClick={handleSearch}>
+          Search
+        </button>
+      </div>
+      
+      {loading ? (
+        <div>
+          <h1 className="text-center mt-5">Loading...</h1>
+        </div>
+      ) : (
+        <Row className="g-4">
+          {(searchPerformed && filteredBooks.length > 0 ? filteredBooks : books).map((book) => (
+            <Col md="6" lg="3" key={book.asin}>
+              <BookHTML
+                img={book.img}
+                title={book.title}
+                price={book.price}
+                category={book.category}
+              />
+            </Col>
+          ))}
+        </Row>
+      )}
     </Container>
   );
 };
