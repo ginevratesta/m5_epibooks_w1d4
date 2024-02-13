@@ -6,3 +6,7 @@
 .card_body{
     height: 200px;
 }
+
+.clicked-card{
+    border: 2px solid red;
+}
