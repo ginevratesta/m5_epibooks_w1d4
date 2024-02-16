@@ -1,5 +1,5 @@
 import { Button, Form } from 'react-bootstrap';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import postComment from './postComments';
 
 const FormComment = ({ id }) => {
@@ -17,9 +17,6 @@ const FormComment = ({ id }) => {
     e.preventDefault();
    await postComment(comment);
   };
-
- 
-
 
   return (
     <Form onSubmit={submit} >

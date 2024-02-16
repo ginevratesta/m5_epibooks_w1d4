@@ -18,9 +18,7 @@ const postComment = async (comment) => {
       options
       );
       console.log(comment);
-
     const data = await res.json();
-    return data;
   } catch (error) {
     console.error("Error:", error);
     alert(error);
