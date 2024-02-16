@@ -4,7 +4,7 @@ import postComment from './postComments';
 
 const FormComment = ({ id }) => {
   const [comment, setComment] = useState({ comment: '', rate: null, elementId: id });
-
+  
   const handleCommentValue = (e) => {
     setComment((prevComment) => ({ ...prevComment, comment: e.target.value }));
   };
@@ -18,11 +18,11 @@ const FormComment = ({ id }) => {
    await postComment(comment);
   };
 
-  useEffect(() => {}, [comment]);
+ 
 
 
   return (
-    <Form onSubmit={submit} id={id} key = {id} comment = {comment}>
+    <Form onSubmit={submit} >
       <Form.Group className="mb-3" controlId="formBasicEmail">
         <Form.Label>Let us know your opinion</Form.Label>
         <Form.Control type="text" onChange={handleCommentValue} placeholder="Write here your comment" />

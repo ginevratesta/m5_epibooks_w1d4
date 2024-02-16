@@ -112,7 +112,7 @@ const GetBooksData = () => {
                 ? stateBookData.filteredBooks
                 : stateBookData.books
               ).map((book) => (
-                <Col md="6" lg="3" key={book.asin} id={book.asin}>
+                <Col md="6" lg="3" key={book.asin}>
                   <BookHTML
                     onClick={changeColor}
                     id={book.asin}

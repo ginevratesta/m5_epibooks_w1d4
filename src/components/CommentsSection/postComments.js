@@ -20,7 +20,7 @@ const postComment = async (comment) => {
       console.log(comment);
 
     const data = await res.json();
-    console.log(data);
+    return data;
   } catch (error) {
     console.error("Error:", error);
     alert(error);

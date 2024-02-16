@@ -7,7 +7,7 @@ import CommentArea from '../CommentsSection/CommentArea';
 const BookHTML = ({ onClick, id, img, title, price, category }) => {
   
   return (
-    <Card id={id} onClick={onClick} >
+    <Card  onClick={onClick} >
       <Card.Img variant="top" src={img} />
       <Card.Body className="card_body">
         <Card.Title>{title}</Card.Title>
