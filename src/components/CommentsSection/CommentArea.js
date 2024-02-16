@@ -7,6 +7,7 @@ const CommentArea = ({ id }) => {
   const [show, setShow] = useState(false);
   const [comments, setComments] = useState([]);
   const [cardId, setCardId] = useState("");
+  const [revalidate, setRevalidate] = useState(false)
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -18,6 +19,10 @@ const CommentArea = ({ id }) => {
     handleShow();
   };
 
+  const handlerRevalidate = (isRevalitated) => {
+    setRevalidate(isRevalitated);
+  };
+
 
   useEffect(() => {
     if (cardId) {
@@ -27,6 +32,7 @@ const CommentArea = ({ id }) => {
         if (res.ok) {
           const data = await res.json();
           setComments(data);
+          setRevalidate(false);
           console.log(comments);
         } else {
           throw new Error('Failed to fetch comments');
@@ -37,8 +43,9 @@ const CommentArea = ({ id }) => {
       }
     };
     fetchComments(cardId)
+    
   }
-  }, [cardId]);
+  }, [cardId, revalidate]);
 
   return (
     <>
@@ -68,7 +75,7 @@ const CommentArea = ({ id }) => {
               </div>
             </Col>
             <Col lg="5">
-              <FormComment id={id}/>
+              <FormComment id={id} handlerRevalidate={handlerRevalidate}/>
             </Col>
           </Row>
         </Modal.Body>

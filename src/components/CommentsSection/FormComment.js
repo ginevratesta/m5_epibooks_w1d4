@@ -2,8 +2,11 @@ import { Button, Form } from 'react-bootstrap';
 import { useState } from 'react';
 import postComment from './postComments';
 
-const FormComment = ({ id }) => {
+
+const FormComment = ({ id, handlerRevalidate }) => {
   const [comment, setComment] = useState({ comment: '', rate: null, elementId: id });
+  
+  
   
   const handleCommentValue = (e) => {
     setComment((prevComment) => ({ ...prevComment, comment: e.target.value }));
@@ -15,9 +18,16 @@ const FormComment = ({ id }) => {
 
   const submit = async (e) => {
     e.preventDefault();
-   await postComment(comment);
+
+   const res = await postComment(comment);
+   
+   if(res.ok){
+    handlerRevalidate(true);
+    return res;
+   }
   };
 
+  
   return (
     <Form onSubmit={submit} >
       <Form.Group className="mb-3" controlId="formBasicEmail">
