@@ -2,6 +2,7 @@ import React from 'react';
 import Card from 'react-bootstrap/Card';
 import ListGroup from 'react-bootstrap/ListGroup';
 import './BookItem.css';
+import CommentArea from '../CommentsSection/CommentArea';
 
 const BookHTML = ({ onClick, id, img, title, price, category }) => {
   
@@ -15,6 +16,7 @@ const BookHTML = ({ onClick, id, img, title, price, category }) => {
           <ListGroup.Item>{category}</ListGroup.Item>
         </ListGroup>
       </Card.Body>
+      <CommentArea id={id}/>
     </Card>
   );
 };
