@@ -4,6 +4,7 @@ import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import { setSearchBook, handleSearch } from '../../redux/bookSlice'; 
+import "./Navbar.css";
 
 const NavBar = (props) => {
     const dispatch = useDispatch();
@@ -32,12 +33,13 @@ const NavBar = (props) => {
                     </Nav>
                     <div className="mb-3">
                         <input
+                            className='mt-3 searchBar_'
                             type="text"
                             placeholder="Search by book title..."
                             value={searchBook}
                             onChange={handleInputChange}
                         />
-                        <button type="button" onClick={handleSearchClick}>
+                        <button className="searchBar_" type="button" onClick={handleSearchClick}>
                             Search
                         </button>
                     </div>

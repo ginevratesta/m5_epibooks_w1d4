@@ -49,7 +49,7 @@ const CommentArea = ({ id }) => {
 
   return (
     <>
-      <Button id= {id} variant="primary" onClick={handleCardClick}>
+      <Button id= {id} variant="tertiary" onClick={handleCardClick}>
         Show Comments
       </Button>
 
