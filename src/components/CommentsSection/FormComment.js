@@ -23,6 +23,8 @@ const FormComment = ({ id, handlerRevalidate }) => {
    
    if(res.ok){
     handlerRevalidate(true);
+    setComment((prevComment) => ({ ...prevComment, comment: "" }));
+    setComment((prevComment) => ({ ...prevComment, rate: "" }));
     return res;
    }
   };
@@ -32,11 +34,11 @@ const FormComment = ({ id, handlerRevalidate }) => {
     <Form onSubmit={submit} >
       <Form.Group className="mb-3" controlId="formBasicEmail">
         <Form.Label>Let us know your opinion</Form.Label>
-        <Form.Control type="text" onChange={handleCommentValue} placeholder="Write here your comment" />
+        <Form.Control type="text" onChange={handleCommentValue} value={comment.comment} placeholder="Write here your comment" />
       </Form.Group>
       <Form.Group className="mb-3" controlId="formBasicEmail">
         <Form.Label>Rate this book</Form.Label>
-        <Form.Control type="number" onChange={handleRateValue} placeholder="Vote from 1 to 5" />
+        <Form.Control type="number" onChange={handleRateValue} value={comment.rate} placeholder="Vote from 1 to 5" />
       </Form.Group>
 
       <Button variant="primary" type="submit">

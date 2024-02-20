@@ -19,6 +19,7 @@ const postComment = async (comment) => {
       );
       console.log(comment);
     const data = await res.json();
+    alert("Your comment has been published successfully!")
     return{
       ...data, 
       ok: res.ok

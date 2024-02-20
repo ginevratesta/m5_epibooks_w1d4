@@ -53,18 +53,18 @@ const CommentArea = ({ id }) => {
         Show Comments
       </Button>
 
-      <Modal  show={show} onHide={handleClose}>
+      <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
           <Modal.Title>Comments Area</Modal.Title>
         </Modal.Header>
-        <Modal.Body>
+        <Modal.Body className="modal_">
           <Row>
             <Col lg="7">
               <div>
                 {comments.length === 0 ? (
                   <p>No comments yet</p>
                 ) : (
-                  comments.map((comment, i) => (
+                  comments.slice().reverse().map((comment, i) => (
                     <div key = {i}>
                       <p>{comment.author}</p>
                       <p>{comment.comment}</p>
