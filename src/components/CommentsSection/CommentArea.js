@@ -2,8 +2,12 @@ import "./CommentArea.css";
 import { useState, useEffect } from 'react';
 import { Button, Modal, Row, Col } from 'react-bootstrap';
 import FormComment from './FormComment';
+import "../ThemeSwitcher/ThemeSwitcher.css";
+import { isDarkModeActive } from '../../redux/darkModeSlice';
+import { useSelector } from "react-redux";
 
 const CommentArea = ({ id }) => {
+  const isDarkMode = useSelector(isDarkModeActive);
   const [show, setShow] = useState(false);
   const [comments, setComments] = useState([]);
   const [cardId, setCardId] = useState("");
@@ -46,15 +50,15 @@ const CommentArea = ({ id }) => {
 
   return (
     <>
-      <Button id= {id} variant="tertiary" onClick={handleCardClick}>
+      <Button id= {id} className = {isDarkMode ? "dark-mode" : ""} onClick={handleCardClick}>
         Show Comments
       </Button>
 
-      <Modal show={show} onHide={handleClose}>
-        <Modal.Header closeButton>
-          <Modal.Title>Comments Area</Modal.Title>
+      <Modal show={show} onHide={handleClose} >
+        <Modal.Header closeButton className = {isDarkMode ? "dark-mode" : ""}>
+          <Modal.Title className = {isDarkMode ? "dark-mode" : ""}>Comments Area</Modal.Title>
         </Modal.Header>
-        <Modal.Body className="modal_">
+        <Modal.Body className = {isDarkMode ? "dark-mode modal_" : "modal_"}>
           <Row>
             <Col lg="7">
               <div>
@@ -76,7 +80,7 @@ const CommentArea = ({ id }) => {
             </Col>
           </Row>
         </Modal.Body>
-        <Modal.Footer>
+        <Modal.Footer className = {isDarkMode ? "dark-mode" : ""}>
           <Button variant="secondary" onClick={handleClose}>
             Close
           </Button>
