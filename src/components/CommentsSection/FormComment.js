@@ -4,7 +4,7 @@ import postComment from './postComments';
 
 
 const FormComment = ({ id, handlerRevalidate }) => {
-  const [comment, setComment] = useState({ comment: '', rate: null, elementId: id });
+  const [comment, setComment] = useState({ comment: '', rate: "", elementId: id });
   
   
   

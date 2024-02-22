@@ -5,6 +5,7 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import { setSearchBook, handleSearch } from '../../redux/bookSlice'; 
 import "./Navbar.css";
+import ThemeSwitcher from '../ThemeSwitcher/ThemeSwitcher';
 
 const NavBar = (props) => {
     const dispatch = useDispatch();
@@ -31,7 +32,8 @@ const NavBar = (props) => {
                         <Nav.Link href="#">{props.link2}</Nav.Link>
                         <Nav.Link href="#">{props.link3}</Nav.Link>
                     </Nav>
-                    <div className="mb-3">
+                        <ThemeSwitcher/>
+                    <div className="mb-3 ms-3">
                         <input
                             className='mt-3 searchBar_'
                             type="text"

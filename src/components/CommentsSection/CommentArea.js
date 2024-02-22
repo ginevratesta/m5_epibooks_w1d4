@@ -13,9 +13,7 @@ const CommentArea = ({ id }) => {
   const handleShow = () => setShow(true);
 
   const handleCardClick = (e) => {
-    console.log(e)
     setCardId(e.target.id);
-    console.log(cardId);
     handleShow();
   };
 
@@ -33,7 +31,6 @@ const CommentArea = ({ id }) => {
           const data = await res.json();
           setComments(data);
           setRevalidate(false);
-          console.log(comments);
         } else {
           throw new Error('Failed to fetch comments');
         }

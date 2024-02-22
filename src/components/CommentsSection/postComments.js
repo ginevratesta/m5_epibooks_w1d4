@@ -17,7 +17,6 @@ const postComment = async (comment) => {
       URL,
       options
       );
-      console.log(comment);
     const data = await res.json();
     alert("Your comment has been published successfully!")
     return{

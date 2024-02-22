@@ -6,12 +6,15 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import BookHTML from "./BookItem";
 import ErrorMessage from "../ErrorNotification/ErrorMessage";
+import "../ThemeSwitcher/ThemeSwitcher.css";
+import { isDarkModeActive } from '../../redux/darkModeSlice';
 
 const URL = "https://epibooks.onrender.com/romance";
 
 const GetBooksData = () => {
     const dispatch = useDispatch();
     const { books, loading, error, filteredBooks } = useSelector(state => state.books);
+    const isDarkMode = useSelector(isDarkModeActive);
 
     useEffect(() => {
         const fetchBooks = async () => {
@@ -36,11 +39,11 @@ const GetBooksData = () => {
     };
 
     return (
-        <>
+        <div className = {isDarkMode ? "dark-mode" : ""}>
             {error ? (
                 <ErrorMessage error={error} />
             ) : (
-                <Container className="py-5">
+                <Container className = "py-5">
                     {loading ? (
                         <div>
                             <h1 className="text-center mt-5">Loading...</h1>
@@ -66,7 +69,7 @@ const GetBooksData = () => {
                     )}
                 </Container>
             )}
-        </>
+        </div>
     );
 };
 
