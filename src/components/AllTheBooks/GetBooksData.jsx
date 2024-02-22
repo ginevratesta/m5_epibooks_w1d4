@@ -41,7 +41,9 @@ const GetBooksData = () => {
     return (
         <div className = {isDarkMode ? "dark-mode" : ""}>
             {error ? (
+                <div className="d-flex justify-content-center">
                 <ErrorMessage error={error} />
+                </div>
             ) : (
                 <Container className = "py-5">
                     {loading ? (
